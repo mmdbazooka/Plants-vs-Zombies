@@ -1,0 +1,20 @@
+let arr = [
+    { image : "1", right : 6.5 , top : 31 },
+    { image : "2", right : 6.3 , top : 33 },
+    { image : "3", right : 7 , top : 30.4 },
+    { image : "4", right : 7 , top : 31.5 },
+    { image : "5", right : 7 , top : 31.5 },
+    { image : "6", right : 7 , top : 32 },
+    { image : "7", right : 13 , top : 35 },
+    { image : "8", right : 7.5 , top : 30.5 },
+    { image : "9", right : 9.1 , top : 37.1 },
+    { image : "10", right : 7 , top : 32 },
+    { image : "11", right : 7 , top : 30 },
+    { image : "12", right : 8 , top : 35 },
+    { image : "13", right : 14.7 , top : 32.8 },
+    { image : "14", right : 7.8 , top : 30.2 },
+    { image : "15", right : 8 , top : 30.2 },
+    { image : "16", right : 7.5 , top : 30.2 },
+    { image : "null", right : 7.5 , top : 30.2 },
+]
+export default arr

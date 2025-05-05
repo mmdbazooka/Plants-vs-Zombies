@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes moveSircleLoading {
+    0%{
+        width: 71px;
+        left: 31%;
+        transform: rotate(0deg);
+    }
+    100%{
+        width: 50px;
+        left: 64%;
+        transform: rotate(700deg);
+    }
+}
+@keyframes moveGrassLoading {
+    0%{width: 0px;}
+    100%{width: 285px;}
+}
+@keyframes rotateSun {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(700deg);}
+}
+@font-face {
+    font-family: "Plants-vs-Zombies";
+    src : url(./assets/fonts/HouseofTerrorRegular.ttf);
+}
+@keyframes scaling {
+    0%{ transform: scale(100%); }
+    20%{ transform: scale(120%); }
+    40%{ transform: scale(140%); }
+    60%{ transform: scale(160%); }
+    80%{ transform: scale(180%); }
+    100%{ transform: scale(200%); }
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "Plants-vs-Zombies";
+}
+#root {
+    background-color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grass {
+    background-image: url("./assets/images/startGame/LoadBar_grass.png");
+    background-repeat: no-repeat;
+    animation: moveGrassLoading 5.2s forwards linear;
+}
+.moveSircleLoading {
+    animation: moveSircleLoading 5s forwards linear;
+}
+.rotateSun {
+    animation: rotateSun 10s forwards linear;
+}
+.card {
+    background-image: url("../src/assets/images/levels/SeedPacket_Larger.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.clipPass {
+    clip-path: polygon(16% 0, 79% 10%, 100% 100%, 0% 100%);
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #18191e;
+    cursor: pointer;
+    height: 4px;
+}
+input[type="range"]::-moz-range-track {
+    background-color: #5f5f5f61;
+    cursor: pointer;
+    height: 4px;
+}
+input[type="range"]::-moz-range-thumb {
+    cursor: pointer;
+    background: url("./assets/images/startMenu/input-thumb.png") 100% 100%;
+    border: none;
+    height: 25px;
+    width: 18px;
+}
+.scaling {
+    animation: scaling 5s forwards steps(100000);
+}
+.difficulty > label {
+    background: url("./assets/images/startMenu/checkbox.png");
+}
+.difficulty > input:checked + label {
+    background: url("./assets/images/startMenu/checked.png");
+    margin-bottom: 1px;
+}

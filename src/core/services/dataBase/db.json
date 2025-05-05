@@ -1,0 +1,186 @@
+{
+  "ourPlants": [
+    {
+      "id": "1",
+      "image": "peashooter.png",
+      "price": 100,
+      "isBrightness": true
+    }
+  ],
+  "level": [
+    {
+      "id": "1",
+      "level": 1
+    }
+  ],
+  "sounds": [
+    {
+      "name": "bleep",
+      "loop": false,
+      "type": "audio",
+      "id": "ec51"
+    },
+    {
+      "name": "tap",
+      "loop": false,
+      "type": "audio",
+      "id": "d1d5"
+    },
+    {
+      "name": "startAdventure",
+      "loop": false,
+      "type": "audio",
+      "id": "4855"
+    },
+    {
+      "name": "stop",
+      "loop": false,
+      "type": "audio",
+      "id": "1298"
+    },
+    {
+      "name": "pauseSound",
+      "loop": false,
+      "type": "audio",
+      "id": "51d1"
+    },
+    {
+      "name": "splat",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "selectSeed",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "cherrybomb",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan1",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan2",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan3",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan4",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan5",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "groan6",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "buzzer",
+      "loop": false,
+      "type": "audio",
+      "id": "2a23"
+    },
+    {
+      "name": "throwpea",
+      "loop": false,
+      "type": "audio",
+      "id": "e35e"
+    },
+    {
+      "name": "points",
+      "loop": false,
+      "type": "audio",
+      "id": "9f40"
+    },
+    {
+      "name": "frozen",
+      "loop": false,
+      "type": "audio",
+      "id": "2a06"
+    },
+    {
+      "name": "losemusic",
+      "loop": false,
+      "type": "audio",
+      "id": "c523"
+    },
+    {
+      "name": "winmusic",
+      "loop": false,
+      "type": "audio",
+      "id": "9bad"
+    },
+    {
+      "name": "plant",
+      "loop": false,
+      "type": "audio",
+      "id": "f5cb"
+    },
+    {
+      "name": "Chomp16s",
+      "loop": false,
+      "type": "audio",
+      "id": "9bad"
+    },
+    {
+      "name": "Chomp8s",
+      "loop": false,
+      "type": "audio",
+      "id": "f5cb"
+    },
+    {
+      "name": "shovel",
+      "loop": false,
+      "type": "audio",
+      "id": "2547"
+    },
+    {
+      "name": "peashooter",
+      "loop": false,
+      "type": "audio",
+      "id": "f4f7"
+    },
+    {
+      "name": "mainmusic",
+      "loop": true,
+      "type": "music",
+      "id": "cde2"
+    },
+    {
+      "name": "startmusic",
+      "loop": true,
+      "type": "music",
+      "id": "d5d5"
+    },
+    {
+      "name": "selectPlantsMusic",
+      "loop": true,
+      "type": "music",
+      "id": "8d7f"
+    }
+  ]
+}
