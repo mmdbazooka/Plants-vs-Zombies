@@ -16,7 +16,6 @@ const DetailsCard = () => {
     
     const selectPlant = () => {
         tapClick()
-        startmusic.pause()
         navigate("/select-plants")
     }
 

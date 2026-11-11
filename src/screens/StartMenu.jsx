@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react"
+import { setSoundVolume } from '../core/utils/sound/playSound.utils'
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { setLevel , bleepHover , tapClick , soundVolume , restartLevels , setPlant , startGame , submitUserName , Difficulty , Modal , Rename } from "../components/startMenu/index"
+import { setLevel , bleepHover , tapClick , restartLevels , setPlant , startGame , submitUserName , Difficulty , Modal , Rename } from "../components/startMenu/index"
 import { chnageBrightness, closeFinish, closeLess, closeMore, closeRestart, helpPageOpen, optionPageClose, optionPageOpen, quitPageClose, quitPageOpen, renameModal } from "../core/utils/start/miniFunctionOfStartMenu.utils"
 
 const StartMenu = () => {
 
-    let navigate = useNavigate()
+    const navigate = useNavigate()
+    const adventure = useRef(null)
     const [brightness, setBrightness] = useState(!localStorage.getItem("userName") ? "dark" : "light")
     const [userName, setUserName] = useState("")
     const [modalUserName, setModalUserName] = useState(!localStorage.getItem("userName") ? true : false)
@@ -22,14 +24,8 @@ const StartMenu = () => {
         if(localStorage.getItem("userName")) setUserName(localStorage.getItem("userName"))
         setLevel()
         setPlant()
-
-
-        setTimeout(() => {
-            startmusic.play()
-            selectPlantsMusic.pause()
-        }, 300);
         if(!localStorage.getItem("difficulty")) localStorage.setItem("difficulty","normal")
-        else return
+        return () => adventure.current?.abort()
 
     }, [])
 
@@ -42,11 +38,11 @@ const StartMenu = () => {
     const handelSoundInp = (e) => {
         if(e.target.id == "musicInp") {
             localStorage.setItem("music",e.target.value)
-            soundVolume("music")
+            setSoundVolume("music")
         }
         else {
             localStorage.setItem("audio",e.target.value)
-            soundVolume("audio")
+            setSoundVolume("audio")
         } 
     }
 
@@ -54,7 +50,11 @@ const StartMenu = () => {
     return (
         <>
             <img src="../src/assets/images/startMenu/startMenuBg.png" alt="" className={brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"} />
-            <img src="../src/assets/images/startMenu/startAdventure.png" alt="" className={`absolute right-[8.1%] top-[10.8%] cursor-pointer hover:brightness-[150%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onMouseOver={bleepHover} onClick={() => startGame(navigate)}/>
+            <img src="../src/assets/images/startMenu/startAdventure.png" alt="" className={`absolute right-[8.1%] top-[10.8%] cursor-pointer hover:brightness-[150%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onMouseOver={bleepHover} onClick={() => {
+                adventure.current?.abort()
+                adventure.current = new AbortController()
+                startGame(navigate, adventure.current.signal)
+            }}/>
             <img src="../src/assets/images/startMenu/SelectorScreen_WoodSign2.png" alt="" className={`absolute left-[3%] top-[21%] cursor-pointer hover:brightness-[130%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={renameModal} onMouseOver={bleepHover} />
             <img src="../src/assets/images/startMenu/SelectorScreen_WoodSign3.png" alt="" className={`absolute left-[4%] top-[30%] cursor-pointer hover:brightness-[130%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={()=> {navigate("/customize-zombie/skin") ; tapClick()}} onMouseOver={bleepHover} />
             <img src="../src/assets/images/startMenu/quit.png" alt="" className={`absolute right-[2%] bottom-[8.5%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={quitPageOpen} onMouseOver={bleepHover} />
