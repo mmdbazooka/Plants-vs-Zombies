@@ -17,6 +17,7 @@ const SHOOTERS = ['peashooter.png', 'Repeatershooter.png', 'snowPeashooter.png']
 const MAX_X = 810
 const HOUSE_X = 19
 const PEA_SPEED = 245
+const CUSTOM_ZOMBIE_CHANCE = 0.5
 
 export const cellCenter = column => LEFT + (column + 0.5) * CELL_WIDTH
 export const laneTop = row => TOP + row * CELL_HEIGHT
@@ -80,7 +81,9 @@ function spawnZombie(lawn, random, sound) {
     const row = Math.floor(random() * ROWS)
     lawn.zombies.push({
         ...type,
-        preset: lawn.presets.length ? lawn.presets[Math.floor(random() * lawn.presets.length)] : undefined,
+        preset: lawn.presets.length && random() < CUSTOM_ZOMBIE_CHANCE
+            ? lawn.presets[Math.floor(random() * lawn.presets.length)]
+            : undefined,
         id: lawn.nextId++,
         x: MAX_X,
         row,
