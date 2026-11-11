@@ -20,9 +20,10 @@ const ZOMBIE_SPEED = 16
 export const cellCenter = column => LEFT + (column + 0.5) * CELL_WIDTH
 export const laneTop = row => TOP + row * CELL_HEIGHT
 
-export function createLawn(level) {
+export function createLawn(level, presets = []) {
     return {
         phase: 'playing',
+        presets,
         time: 0,
         sun: 50,
         nextSun: 9,
@@ -76,6 +77,7 @@ function spawnZombie(lawn, random, sound) {
     const row = Math.floor(random() * ROWS)
     lawn.zombies.push({
         ...type,
+        preset: lawn.presets.length ? lawn.presets[Math.floor(random() * lawn.presets.length)] : undefined,
         id: lawn.nextId++,
         x: MAX_X,
         row,

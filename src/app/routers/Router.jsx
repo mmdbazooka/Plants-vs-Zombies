@@ -1,4 +1,4 @@
-import { createBrowserRouter , Container , Loading , StartMenu , Level , SelectPlants , Help , CustomizeZombie , Accessory , Backdrops , Clothes , Eyewear , FacialHair , Hair , Hat , Skin , Tidbits , DetailsCard , Achievement , NotFound , Guide } from "./Imports"
+import { createBrowserRouter , Container , Loading , StartMenu , Level , SelectPlants , Help , CustomizeZombie , DetailsCard , Achievement , NotFound , Guide } from "./Imports"
 
 const router = createBrowserRouter([
     
@@ -35,46 +35,8 @@ const router = createBrowserRouter([
                 element : <DetailsCard />
             },
             {
-                path : "/customize-zombie",
-                element : <CustomizeZombie />,
-                children : [
-                    {
-                        path : "/customize-zombie/skin",
-                        element : <Skin />
-                    },
-                    {
-                        path : "/customize-zombie/hair",
-                        element : <Hair />
-                    },
-                    {
-                        path : "/customize-zombie/backdrops",
-                        element : <Backdrops />
-                    },
-                    {
-                        path : "/customize-zombie/facial_hair",
-                        element : <FacialHair />
-                    },
-                    {
-                        path : "/customize-zombie/hats",
-                        element : <Hat />
-                    },
-                    {
-                        path : "/customize-zombie/eyewear",
-                        element : <Eyewear />
-                    },
-                    {
-                        path : "/customize-zombie/clothes",
-                        element : <Clothes />
-                    },
-                    {
-                        path : "/customize-zombie/tidbits",
-                        element : <Tidbits />
-                    },
-                    {
-                        path : "/customize-zombie/accessory",
-                        element : <Accessory />
-                    }
-                ]
+                path : '/customize-zombie/:tab?',
+                element : <CustomizeZombie />
             },
             {
                 path : "/level",

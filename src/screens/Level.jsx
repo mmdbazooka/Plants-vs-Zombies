@@ -4,6 +4,8 @@ import { getProgress, getReward, unlockReward } from '../core/services/dataBase/
 import { advanceLawn, cellCenter, collectSun, createLawn, laneTop, plantSeed, CELL_HEIGHT, CELL_WIDTH, COLUMNS, LEFT, ROWS, TOP } from '../core/utils/lawn'
 import { errorSound, playSound, stopSound, tapClick } from '../core/utils/sound/playSound.utils'
 import ZombieShowMap from '../components/map/ZombieShowMap'
+import ZombieSprite from '../components/map/ZombieSprite'
+import { readZombatars } from '../core/services/dataBase/zombatar'
 
 const STEP = 50
 const FIELD_PAN = -378
@@ -42,7 +44,7 @@ function Round({ seeds }) {
 
     useEffect(() => {
         if (level == null) return
-        const game = createLawn(level)
+        const game = createLawn(level, readZombatars())
         lawnRef.current = game
         setLawn({ ...game })
         playSound('mainmusic')
@@ -169,15 +171,10 @@ function Round({ seeds }) {
                             className="absolute w-[72px] h-[80px] object-contain pointer-events-none -translate-x-1/2"
                             style={{ left: cellCenter(plant.column), top: laneTop(plant.row) + 9 }} />
                     ))}
-                    {lawn.zombies.map(zombie => {
-                        const sprite = zombie.hp <= 0 ? 'burnedZombie.gif' : zombie.eating ? zombie.eat : zombie.walk
-                        return (
-                            <img key={zombie.id} src={`../src/assets/images/zombies/${sprite}`} alt=""
-                                data-zombie-row={zombie.row + 1} data-eating={zombie.eating}
-                                className="absolute z-[11] pointer-events-none w-[80px] -translate-y-full"
-                                style={{ left: zombie.x - 18, top: laneTop(zombie.row) + 93, filter: zombie.slowedUntil > lawn.time ? 'drop-shadow(0 0 7px cyan)' : undefined }} />
-                        )
-                    })}
+                    {lawn.zombies.map(zombie => (
+                        <ZombieSprite key={zombie.id} zombie={zombie} x={zombie.x - 18} y={laneTop(zombie.row) + 93}
+                            slowed={zombie.slowedUntil > lawn.time} />
+                    ))}
                     {lawn.peas.map(pea => (
                         <img key={pea.id} src={plantImage(pea.frozen ? 'SnowPea.png' : 'pea.png')} alt="" data-pea=""
                             className="absolute z-[12] pointer-events-none w-5 -translate-x-1/2"

@@ -102,3 +102,32 @@ input[type="range"]::-moz-range-thumb {
 .falling-sun {
     animation: falling-sun 2s ease-out both;
 }
+
+.zombie-portrait {
+    position: absolute;
+    left: -6px;
+    bottom: 44px;
+    width: 82px;
+    height: 88px;
+    animation: zombie-portrait-walk .8s ease-in-out infinite alternate;
+}
+.zombie-portrait-biting {
+    animation: zombie-portrait-bite .45s ease-in-out infinite alternate;
+}
+.zombie-portrait-layers {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    left: -240px;
+    top: -40px;
+    transform: scale(.4);
+    transform-origin: top left;
+}
+@keyframes zombie-portrait-walk {
+    from { transform: translateY(-2px) rotate(-2deg); }
+    to { transform: translateY(2px) rotate(2deg); }
+}
+@keyframes zombie-portrait-bite {
+    from { transform: rotate(0deg); }
+    to { transform: translateX(-3px) rotate(-6deg); }
+}
