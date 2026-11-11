@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import customAxios from '../core/services/interceptor/customAxios'
+import { getPlantPrice } from '../core/services/dataBase/progress'
 import { playSound, stopSound, tapClick } from '../core/utils/sound/playSound.utils'
 import SelectPlantMap from '../components/map/SelectPlantMap'
 import Modal from '../components/startMenu/Modal'
@@ -19,7 +20,7 @@ const SelectPlants = () => {
         const controller = new AbortController()
         customAxios.get('/ourPlants', { signal: controller.signal })
             .then(({ data }) => {
-                setAvailable(data.filter(plant => plant.image !== 'medal.png' && Number.isFinite(Number(plant.price))))
+                setAvailable(data.filter(plant => plant.image !== 'medal.png').map(plant => ({ ...plant, price: getPlantPrice(plant) })))
             })
             .catch(() => {
                 if (!controller.signal.aborted) setLoadError(true)

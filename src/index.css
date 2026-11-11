@@ -95,3 +95,10 @@ input[type="range"]::-moz-range-thumb {
     background: url("./assets/images/startMenu/checked.png");
     margin-bottom: 1px;
 }
+@keyframes falling-sun {
+    from { transform: translateY(-180px); }
+    to { transform: translateY(0); }
+}
+.falling-sun {
+    animation: falling-sun 2s ease-out both;
+}

@@ -1,19 +1,26 @@
-import { tapClick } from "../sound/playSound.utils"
-import customAxios from "../../services/interceptor/customAxios"
+import { errorSound, tapClick } from '../sound/playSound.utils'
+import customAxios from '../../services/interceptor/customAxios'
+import { getProgress } from '../../services/dataBase/progress'
+
+let resetting = false
 
 const restartLevels = async () => {
-    const { data } = await customAxios.get("/ourPlants")
+    if (resetting) return
+    resetting = true
 
-    data.map(async (element) => {
-        if(element.id !== "1")  await customAxios.delete(`/ourPlants/${element.id}`)
-    })
-
-    customAxios.put("/level/1",{
-        "id": 1,
-        "level": 1
-    })
-    tapClick()
-    restartModal.classList.replace("invisible" , "visible")
+    try {
+        const progress = await getProgress()
+        const { data } = await customAxios.get('/ourPlants')
+        await Promise.all(data.filter(plant => String(plant.id) !== '1')
+            .map(plant => customAxios.delete(`/ourPlants/${plant.id}`)))
+        await customAxios.patch(`/level/${progress.id}`, { level: 1 })
+        tapClick()
+        document.getElementById('restartModal')?.classList.replace('invisible', 'visible')
+    } catch {
+        errorSound()
+    } finally {
+        resetting = false
+    }
 }
 
 export default restartLevels
