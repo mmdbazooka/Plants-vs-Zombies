@@ -1,28 +1,47 @@
-# Plants-vs-Zombies 🌱🧟✨
+# Plants vs. Zombies
 
-Welcome to **Plants-vs-Zombies**, a vibrant and engaging clone of the classic *Plants vs. Zombies* game! Built with **React** and **json-server**, this project showcases my expertise in **game development**, **API integration**, and **React component design**. 🚀
+![Plants vs. Zombies logo](src/assets/images/startGame/textTitleScreen.png)
 
-## About the Project
-This game recreates the iconic tower-defense experience with **6 stages**, immersive sound effects, and customizable zombies. It demonstrates my ability to build a **complex game** with **dynamic data** fetched via json-server and a polished UI using React. 🎯
+A browser-based tower defense fan project with six adventure stages. Collect sun, place plants to defend each lane, and claim rewards to unlock new seeds.
 
-## Features
-- 🌱 Six stages with Easy, Normal, and Hard difficulty
-- 🧟 Saved zombie appearances can spawn alongside regular zombies
-- 🎵 Immersive sound effects and background music
-- 🎮 Long, entertaining gameplay with smooth mechanics
-- 🌐 Data management via json-server API
-- 📱 Responsive design built with React
-- 🛠️ Built with React and json-server
+## Run locally
 
-## Why This Project?
-This project highlights my skills in **React development**, **API-driven game logic**, and **creative game design**. It’s a testament to my ability to craft **fun, feature-rich games** with seamless performance and engaging gameplay. 💪
+You'll need Node.js 18.3 or later, npm, and a modern browser.
 
-## Getting Started
-1. Clone the repository: `git clone [your-repo-link]`
-2. Install dependencies: `npm install`
-3. Start the json-server: `npm run api`
-4. In a second terminal, run the React app with `npm run dev`
-5. Open `http://localhost:5173` in a browser.
-6. Start defending your garden!
+```bash
+git clone https://github.com/mmdbazooka/Plants-vs-Zombies.git
+cd Plants-vs-Zombies
+npm ci
+npm run api
+```
 
-Use the **Fullscreen** button to fit the game to the display. Press Esc or choose **Exit fullscreen** to leave fullscreen.
+Leave the API running on port 3000. From a second terminal in the same folder, run:
+
+```bash
+npm run dev
+```
+
+Open [the game at localhost:5173](http://localhost:5173).
+
+## How to play
+
+1. Select **Start Adventure** from the main menu. Choose your seeds and select **Let's Rock**.
+2. Click falling sun to collect it. Select a seed card, then click an empty lawn tile to plant it. Use the shovel to clear a tile.
+3. Defeat every zombie and click the reward to advance. If a zombie reaches the house, select **Try Again** to restart the stage.
+
+Choose **Easy**, **Normal**, or **Hard** under **Options**. Compared with Normal, Hard doubles the zombie count, halves the time between spawns, and increases zombie movement speed by 50%.
+
+Open **Customize Zombie** from the main menu to change its appearance and save it. Once you have a saved design, each spawn has a 50% chance of using a randomly selected saved design.
+
+Use **Fullscreen** in the bottom-right corner to fit the game to your display. Press **Esc** to exit.
+
+## Build and preview
+
+```bash
+npm run build
+npm run preview
+```
+
+Keep the API running and open [the production preview at localhost:4173](http://localhost:4173).
+
+The frontend uses React, React Router, Vite, and Tailwind CSS. JSON Server stores adventure progress and unlocked plants in `src/core/services/dataBase/db.json` and serves the game's sound settings. Zombie designs are saved in your browser.
