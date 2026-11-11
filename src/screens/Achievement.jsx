@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { tapClick } from "../core/utils/sound/playSound.utils"
-import { context } from "../context/appContext"
+import { context } from "../context/AppContext"
 
 const Achievement = () => {
 

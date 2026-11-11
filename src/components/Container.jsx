@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { tapClick } from "../core/utils/sound/playSound.utils";
-import { context } from "../context/appContext";
+import { context } from "../context/AppContext";
 import Audio from './map/Audio'
 import soundVolume from "../core/utils/sound/soundVolume.utils";
 

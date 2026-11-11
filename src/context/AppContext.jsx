@@ -12,11 +12,9 @@ const AppContext = ({ children }) => {
     const [picture, setPicture] = useState("")
     const [pricePerPlant, setpricePerPlant] = useState()
     const [timeTostart, setTimeTostart] = useState(false)
-    const [plantsThatWeHave, setPlantsThatWeHave] = useState([])
-    const [selectedPlants, setSelectedPlants] = useState()
     
     return (
-        <context.Provider value={{ setflag , flag , setCardSrc , cardSrc , setCardName , cardName , setCardDescription , cardDescription , sunStorage , setSunStorage , picture , setPicture , pricePerPlant , setpricePerPlant , timeTostart , setTimeTostart , plantsThatWeHave ,  setPlantsThatWeHave , selectedPlants , setSelectedPlants }}>
+        <context.Provider value={{ setflag , flag , setCardSrc , cardSrc , setCardName , cardName , setCardDescription , cardDescription , sunStorage , setSunStorage , picture , setPicture , pricePerPlant , setpricePerPlant , timeTostart , setTimeTostart }}>
             { children }
         </context.Provider>
     )

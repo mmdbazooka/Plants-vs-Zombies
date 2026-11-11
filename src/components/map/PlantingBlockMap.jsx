@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { context } from "../../context/appContext"
+import { context } from "../../context/AppContext"
 import arr from "../../core/services/dataBase/groundGrassLength"
 import plantingPlant from "../../core/utils/plantingPlants.utils"
 

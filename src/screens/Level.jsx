@@ -7,7 +7,7 @@ import zombie from "../core/utils/zombie.utils";
 import { useNavigate } from "react-router-dom";
 import plantCleaner from "../core/actions/plantCleanerAction";
 import handelZombieBurned from "../core/utils/handelZombieBurned.utils";
-import { context } from "../context/appContext";
+import { context } from "../context/AppContext";
 
 const Level = () => {
 

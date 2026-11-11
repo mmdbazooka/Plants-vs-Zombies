@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import getSrcCard from "../core/utils/get/getSrcCard.utils"
-import { context } from "../context/appContext"
+import { context } from "../context/AppContext"
 
 const Card = ({ image , price , sunStorage }) => {
 

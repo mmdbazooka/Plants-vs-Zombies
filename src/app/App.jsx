@@ -1,7 +1,7 @@
 import { RouterProvider  } from 'react-router-dom'
 import { useEffect } from 'react'
 import router from "./routers/Router"
-import AppContext from '../context/appContext'
+import AppContext from '../context/AppContext'
 
 const App = () => {
 

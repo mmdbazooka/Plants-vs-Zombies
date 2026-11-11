@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { setLevel , bleepHover , createArrayForOurPlants , tapClick , soundVolume , restartLevels , setPlant , startGame , submitUserName , Difficulty , Modal , Rename } from "../components/startMenu/index"
+import { setLevel , bleepHover , tapClick , soundVolume , restartLevels , setPlant , startGame , submitUserName , Difficulty , Modal , Rename } from "../components/startMenu/index"
 import { chnageBrightness, closeFinish, closeLess, closeMore, closeRestart, helpPageOpen, optionPageClose, optionPageOpen, quitPageClose, quitPageOpen, renameModal } from "../core/utils/start/miniFunctionOfStartMenu.utils"
 
 const StartMenu = () => {
@@ -20,8 +20,6 @@ const StartMenu = () => {
         else container.style.filter = `brightness(${localStorage.getItem("brightness")}%)`
 
         if(localStorage.getItem("userName")) setUserName(localStorage.getItem("userName"))
-
-        createArrayForOurPlants()
         setLevel()
         setPlant()
 

@@ -1,4 +1,3 @@
-import createArrayForOurPlants from "./createArrayForOurPlants.utils"
 import createSun from "./createSun.utils"
 import customAxios from "../../services/interceptor/customAxios"
 
@@ -12,8 +11,6 @@ const createCard = async (navigate , setSunStorage) => {
     peaSpawn.appendChild(div)
 
     div.addEventListener("click", async () => {
-
-        createArrayForOurPlants()
 
         const result = await customAxios.get("/level")
 

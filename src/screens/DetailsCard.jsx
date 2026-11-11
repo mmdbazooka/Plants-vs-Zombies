@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { bleepHover, tapClick } from "../core/utils/sound/playSound.utils";
 import getInfoCard from "../core/utils/get/getInfoCard.utils";
-import { context } from "../context/appContext";
+import { context } from "../context/AppContext";
 
 const DetailsCard = () => {
 
