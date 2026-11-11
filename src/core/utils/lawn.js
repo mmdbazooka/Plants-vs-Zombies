@@ -1,3 +1,5 @@
+import { difficultySettings } from './difficulty.js'
+
 export const ROWS = 5
 export const COLUMNS = 9
 export const CELL_WIDTH = 82
@@ -14,21 +16,22 @@ const ZOMBIES = [
 const SHOOTERS = ['peashooter.png', 'Repeatershooter.png', 'snowPeashooter.png']
 const MAX_X = 810
 const HOUSE_X = 19
-const PEA_SPEED = 380
-const ZOMBIE_SPEED = 16
+const PEA_SPEED = 245
 
 export const cellCenter = column => LEFT + (column + 0.5) * CELL_WIDTH
 export const laneTop = row => TOP + row * CELL_HEIGHT
 
-export function createLawn(level, presets = []) {
+export function createLawn(level, presets = [], difficulty = 'normal') {
+    const settings = difficultySettings[difficulty] ?? difficultySettings.normal
     return {
         phase: 'playing',
         presets,
         time: 0,
         sun: 50,
-        nextSun: 9,
+        nextSun: settings.sunInterval,
         nextZombie: 11,
-        remaining: ZOMBIES_PER_LEVEL[level - 1],
+        settings,
+        remaining: Math.max(1, Math.round(ZOMBIES_PER_LEVEL[level - 1] * settings.waveMultiplier)),
         nextId: 1,
         plants: [],
         zombies: [],
@@ -86,7 +89,7 @@ function spawnZombie(lawn, random, sound) {
         burnedUntil: 0,
     })
     lawn.remaining--
-    lawn.nextZombie += 11
+    lawn.nextZombie += lawn.settings.spawnInterval
     sound(`groan${Math.floor(random() * 6) + 1}`)
 }
 
@@ -151,7 +154,7 @@ function updateZombies(lawn, seconds, sound) {
         if (zombie.hp <= 0) continue
 
         const slowed = zombie.slowedUntil > lawn.time
-        const nextX = zombie.x - ZOMBIE_SPEED * seconds * (slowed ? 0.5 : 1)
+        const nextX = zombie.x - lawn.settings.speed * seconds * (slowed ? 0.5 : 1)
         const blocker = lawn.plants.find(plant => {
             if (plant.hp <= 0 || plant.row !== zombie.row) return false
             const contact = cellCenter(plant.column) + 23
@@ -181,7 +184,7 @@ export function advanceLawn(lawn, seconds, sound, random = Math.random) {
     lawn.time += seconds
     if (lawn.time >= lawn.nextSun) {
         addSun(lawn, LEFT + random() * 675, TOP + random() * 405, 15, true)
-        lawn.nextSun += 9
+        lawn.nextSun += lawn.settings.sunInterval
     }
     if (lawn.remaining > 0 && lawn.time >= lawn.nextZombie) spawnZombie(lawn, random, sound)
 

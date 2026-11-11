@@ -122,7 +122,10 @@ export default function CustomizeZombie() {
             <img src={zombieImage('mainBg.png')} alt="" />
             <div className="absolute right-[43px] top-[117px] w-[139px] h-[176px]" style={{ background: backdrop }} />
             <ZombieAppearance preset={preset} />
-            <ZombieSprite zombie={{ preset, hp: 1, row: 0, eating: false }} x={644} y={460} />
+            <div className="absolute left-[620px] top-[319px] w-[136px] h-[147px] overflow-hidden"
+                style={{ background: "url('../src/assets/images/levels/background1.png') -380px -230px" }}>
+                <ZombieSprite zombie={{ preset, hp: 1, row: 0, eating: false }} x={35} y={135} />
+            </div>
             <img src={zombieImage('buttons/portrait.png')} alt="" className="absolute right-0 top-[89px] z-30 pointer-events-none" />
 
             <div className="absolute left-[62px] top-[128px] w-[93px] h-[322px] flex flex-col">

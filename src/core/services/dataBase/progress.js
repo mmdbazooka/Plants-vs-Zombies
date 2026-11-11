@@ -1,3 +1,4 @@
+import { difficultySettings, getDifficulty } from '../../utils/difficulty'
 import customAxios from '../interceptor/customAxios'
 
 const REWARDS = [
@@ -12,13 +13,12 @@ const REWARDS = [
 export function getReward(level) {
     const reward = REWARDS[level - 1]
     if (level !== 1) return reward
-    const difficulty = localStorage.getItem('difficulty')
-    const price = { easy: 25, normal: 50, hard: 75 }[difficulty] ?? reward.price
+    const price = difficultySettings[getDifficulty()].sunflowerPrice
     return { ...reward, price }
 }
 
 export function getPlantPrice(plant) {
-    return plant.image === 'sunflower.png' && (plant.price == null || plant.price === '')
+    return plant.image === 'sunflower.png'
         ? getReward(1).price
         : Number(plant.price)
 }

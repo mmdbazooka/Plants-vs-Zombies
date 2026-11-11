@@ -1,3 +1,4 @@
+import { getDifficulty } from '../core/utils/difficulty'
 import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { getProgress, getReward, unlockReward } from '../core/services/dataBase/progress'
@@ -44,7 +45,7 @@ function Round({ seeds }) {
 
     useEffect(() => {
         if (level == null) return
-        const game = createLawn(level, readZombatars())
+        const game = createLawn(level, readZombatars(), getDifficulty())
         lawnRef.current = game
         setLawn({ ...game })
         playSound('mainmusic')
