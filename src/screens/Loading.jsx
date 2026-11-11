@@ -1,35 +1,44 @@
-import { useEffect } from "react";
-import loadingShow from "../core/utils/start/loading.utils";
-
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { tapClick } from '../core/utils/sound/playSound.utils'
 
 const Loading = () => {
+    const navigate = useNavigate()
+    const [ready, setReady] = useState(false)
 
-    const HoverOnTextLoading = () => textLoading.classList.replace("text-[#d9b720]","text-[#f9590f]")
-    const HoverOutTextLoading = () => textLoading.classList.replace("text-[#f9590f]","text-[#d9b720]")
-    
     useEffect(() => {
-        loadingShow()
-        return () => {
-            container.className += "cursor-pointer"
-        }
+        const timer = setTimeout(() => setReady(true), 5000)
+        return () => clearTimeout(timer)
     }, [])
-    
+
+    const start = () => {
+        tapClick()
+        navigate('/start-menu')
+    }
+
     return (
         <>
             <img src="../src/assets/images/startGame/titlescreen.jpg" alt="" />
-            <img src="../src/assets/images/startGame/textTitlescreen.png" alt="" className="absolute top-[0%]" />
-            <div className="w-[300px] h-[50px] absolute bottom-[15px] right-[29%]" onMouseOver={HoverOnTextLoading} onMouseOut={HoverOutTextLoading}>
-                <img id="loadBarDirt" src="../src/assets/images/startGame/LoadBar_dirt.png" alt="" className="absolute bottom-0 z-[6] " onMouseOver={HoverOnTextLoading} onMouseOut={HoverOutTextLoading}/>
-                <div className="grass moveGrassLoasding relative transition-all duration-500 ease-linear h-[50px] z-[10] top-[-15px] right-[2px]" style={{width:"0px"}}></div>
+            <img src="../src/assets/images/startGame/textTitleScreen.png" alt="" className="absolute top-0" />
+            <div className="w-[300px] h-[50px] absolute bottom-[15%] right-[29%]">
+                <img src="../src/assets/images/startGame/LoadBar_dirt.png" alt="" className="absolute bottom-0 z-[6]" />
+                <div className="grass relative h-[50px] top-[-15px] right-[2px] z-10" />
             </div>
-            <div className="w-full h-[25px] absolute bottom-[28px] z-[6] flex justify-center items-center">
-                <span id="textLoading" className="text-[#d9b720] text-[22px] ml-[25px]">LOADING...</span>
-            </div>
-            <img src="../src/assets/images/startGame/LoadBar_circleGrass.png" alt="" className="moveSircleLoading absolute bottom-[53px] left-[31%] z-[50]" />
-            <img id="zombieHead" src="../src/assets/images/startGame/LoadBar_zombieHead.png" alt="" className="absolute bottom-[25px] right-[37%] z-[5] transition-all duration-500 " />
-            <img id="flower1" src="../src/assets/images/startGame/LoadBar_flower.png" alt="" className="absolute bottom-[25px] right-[47%] z-[5] transition-all duration-500 scale-y-[80%]" />
-            <img id="flower2" src="../src/assets/images/startGame/LoadBar_flower.png" alt="" className="absolute bottom-[25px] right-[54%] z-[5] transition-all duration-500 scale-x-[-1]" />
-            <img id="flower3" src="../src/assets/images/startGame/LoadBar_flower.png" alt="" className="absolute bottom-[25px] right-[61%] z-[5] transition-all duration-500 scale-[80%]" />
+            <img src="../src/assets/images/startGame/LoadBar_circleGrass.png" alt="" className="moveSircleLoading absolute bottom-[53px] left-[31%] z-40" />
+            {[
+                ['LoadBar_zombieHead.png', 'right-[37%]'],
+                ['LoadBar_flower.png', 'right-[47%] scale-y-[80%]'],
+                ['LoadBar_flower.png', 'right-[54%] scale-x-[-1]'],
+                ['LoadBar_flower.png', 'right-[61%] scale-[80%]'],
+            ].map(([image, position]) => (
+                <img key={position} src={`../src/assets/images/startGame/${image}`} alt=""
+                    className={`absolute z-[5] transition-all duration-500 ${ready ? 'bottom-[55px]' : 'bottom-[25px]'} ${position}`} />
+            ))}
+            {ready ? (
+                <button type="button" onClick={start} className="absolute inset-0 z-50 cursor-pointer text-[#d9b720] hover:text-[#f9590f]">
+                    <span className="absolute inset-x-0 bottom-[28px] text-[22px]">CLICK TO START!</span>
+                </button>
+            ) : <span className="absolute inset-x-0 bottom-[28px] z-10 text-center text-[22px] text-[#d9b720]">LOADING...</span>}
         </>
     )
 }

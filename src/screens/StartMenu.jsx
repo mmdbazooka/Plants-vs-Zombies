@@ -16,10 +16,7 @@ const StartMenu = () => {
 
     useEffect(() => {
 
-        container.scrollTop = 0
-        container.style.cursor = "default"
-        if(!localStorage.getItem("brightness")) container.style.filter = `brightness(100%)`
-        else container.style.filter = `brightness(${localStorage.getItem("brightness")}%)`
+        document.getElementById('container').scrollTop = 0
 
         if(localStorage.getItem("userName")) setUserName(localStorage.getItem("userName"))
         setLevel()
@@ -50,16 +47,16 @@ const StartMenu = () => {
     return (
         <>
             <img src="../src/assets/images/startMenu/startMenuBg.png" alt="" className={brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"} />
-            <img src="../src/assets/images/startMenu/startAdventure.png" alt="" className={`absolute right-[8.1%] top-[10.8%] cursor-pointer hover:brightness-[150%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onMouseOver={bleepHover} onClick={() => {
+            <img src="../src/assets/images/startMenu/startAdventure.png" alt="Start adventure" className={`absolute right-[8.1%] top-[10.8%] cursor-pointer hover:brightness-[150%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onMouseOver={bleepHover} onClick={() => {
                 adventure.current?.abort()
                 adventure.current = new AbortController()
                 startGame(navigate, adventure.current.signal)
             }}/>
             <img src="../src/assets/images/startMenu/SelectorScreen_WoodSign2.png" alt="" className={`absolute left-[3%] top-[21%] cursor-pointer hover:brightness-[130%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={renameModal} onMouseOver={bleepHover} />
-            <img src="../src/assets/images/startMenu/SelectorScreen_WoodSign3.png" alt="" className={`absolute left-[4%] top-[30%] cursor-pointer hover:brightness-[130%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={()=> {navigate("/customize-zombie/skin") ; tapClick()}} onMouseOver={bleepHover} />
+            <img src="../src/assets/images/startMenu/SelectorScreen_WoodSign3.png" alt="Customize zombie" className={`absolute left-[4%] top-[30%] cursor-pointer hover:brightness-[130%] ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={()=> {navigate("/customize-zombie/skin") ; tapClick()}} onMouseOver={bleepHover} />
             <img src="../src/assets/images/startMenu/quit.png" alt="" className={`absolute right-[2%] bottom-[8.5%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={quitPageOpen} onMouseOver={bleepHover} />
             <img src="../src/assets/images/startMenu/help.png" alt="" className={`absolute right-[10.7%] bottom-[7%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={() => helpPageOpen(navigate)} onMouseOver={bleepHover} />
-            <img src="../src/assets/images/startMenu/options.png" alt="" className={`absolute right-[18.8%] bottom-[11%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={optionPageOpen} onMouseOver={bleepHover} />
+            <img src="../src/assets/images/startMenu/options.png" alt="Options" className={`absolute right-[18.8%] bottom-[11%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={optionPageOpen} onMouseOver={bleepHover} />
             <img src="../src/assets/images/startMenu/Achievements_pedestal.png" alt="" className={`absolute left-[2.5%] bottom-[6%] cursor-pointer hover:brightness-125 ${brightness == "dark" ? "brightness-[60%]" : "brightness-[100%]"}`} onClick={() => {navigate("/achievement") ; tapClick()}} onMouseOver={bleepHover} onMouseEnter={(e)=> {e.target.src = "../src/assets/images/startMenu/Achievements_pedestal_press.png"}} onMouseOut={(e)=> e.target.src = "../src/assets/images/startMenu/Achievements_pedestal.png"} />
             <img src="../src/assets/images/startMenu/zombieHandPlace.png" alt="" id="zombieHandPlace" className={`absolute left-[30.7%] bottom-0 z-[50] opacity-0 transition-all duration-75`} />
             <img src="../src/assets/images/startMenu/zombieHand.png" alt="" id="zombieHand" className={`absolute left-[30.5%] bottom-[-45%] z-[49]  transition-all duration-500 ease-linear`} />
@@ -69,7 +66,7 @@ const StartMenu = () => {
                     <div className="relative">
                         <img src="../src/assets/images/startMenu/new-user.png" alt="" className="mb-[30px]" />
                         <input type="text" id="inputUserName" className="w-[82%] absolute right-[9%] bottom-[44.5%] bg-[transparent] outline-none pl-[8px] text-white placeholder:text-white" placeholder="Enter Your Name" />
-                        <img src="../src/assets/images/startMenu/ok-button.png" alt="" className="absolute bottom-[17%] left-[6.7%] hover:brightness-125 cursor-pointer" onClick={() => submitUserName(setUserName , setModalUserName , setBrightness)} onMouseOver={bleepHover} />
+                        <img src="../src/assets/images/startMenu/ok-button.png" alt="Confirm name" className="absolute bottom-[17%] left-[6.7%] hover:brightness-125 cursor-pointer" onClick={() => submitUserName(setUserName , setModalUserName , setBrightness)} onMouseOver={bleepHover} />
                         <img src="../src/assets/images/startMenu/cancel_button.png" alt="" className="absolute bottom-[17%] right-[7.3%] hover:brightness-125 cursor-pointer" onClick={() => handleEnterName(true , false)} onMouseOver={bleepHover} />
                     </div>
                 }
@@ -88,7 +85,7 @@ const StartMenu = () => {
             <div id="optionModalHolder" className="w-full h-full absolute left-0 top-0 flex justify-center items-center z-50 invisible">
                 <div className="relative flex flex-col justify-center items-center">
                     <img src="../src/assets/images/startMenu/optionModal.png" alt="" />
-                    <img src="../src/assets/images/startMenu/okOptionModal.png" alt="" className="absolute bottom-3 ml-1 cursor-pointer hover:brightness-125" onClick={optionPageClose} onMouseOver={bleepHover} />
+                    <img src="../src/assets/images/startMenu/okOptionModal.png" alt="Close options" className="absolute bottom-3 ml-1 cursor-pointer hover:brightness-125" onClick={optionPageClose} onMouseOver={bleepHover} />
 
                     <div className="w-[140px] h-[85px] absolute right-[60px] top-[130px] flex flex-col justify-between [&>input]:w-full [&>input]:bg-transparent">
                         <input type="range" id="musicInp" min={0} max={1} step={.1} onInput={handelSoundInp} defaultValue={!localStorage.getItem("music") ? .5 : localStorage.getItem("music")} />

@@ -1,8 +1,9 @@
 import audioFiles from 'virtual:game-audio'
 import customAxios from '../../services/interceptor/customAxios'
-import { sounds } from '../../services/dataBase/db.json'
 
-const metadata = new Map(sounds.map(sound => [sound.name, sound]))
+const metadata = new Map(['mainmusic', 'startmusic', 'selectPlantsMusic'].map(name => [
+    name, { loop: true, type: 'music' },
+]))
 const buffers = new Map()
 const active = new Map()
 const gains = new Map()

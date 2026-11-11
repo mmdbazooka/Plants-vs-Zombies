@@ -10,7 +10,6 @@ const DetailsCard = () => {
     const {cardSrc , cardName , cardDescription , setCardSrc , setCardName , setCardDescription } = useContext(context)
 
     useEffect(() => {
-        container.style.cursor = "default"
         getInfoCard(setCardSrc , setCardName , setCardDescription )
     }, [])
     

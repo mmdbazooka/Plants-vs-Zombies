@@ -1,20 +1,11 @@
-import { RouterProvider  } from 'react-router-dom'
-import { useEffect } from 'react'
-import router from "./routers/Router"
+import { RouterProvider } from 'react-router-dom'
+import router from './routers/Router'
 import AppContext from '../context/AppContext'
 
-const App = () => {
-
-    useEffect(() => {
-      window.ondragstart = () => false
-      container.style.filter = `brightness(${localStorage.getItem("brightness")}%)`
-    }, [])
-
-    return (
-      <AppContext >
-        <RouterProvider router={router}></RouterProvider> 
-      </AppContext>
-    )
-}
+const App = () => (
+    <AppContext>
+        <RouterProvider router={router} />
+    </AppContext>
+)
 
 export default App

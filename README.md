@@ -3,11 +3,11 @@
 Welcome to **Plants-vs-Zombies**, a vibrant and engaging clone of the classic *Plants vs. Zombies* game! Built with **React** and **json-server**, this project showcases my expertise in **game development**, **API integration**, and **React component design**. 🚀
 
 ## About the Project
-This game recreates the iconic tower-defense experience with over **8 stages**, immersive sound effects, and customizable zombies. It demonstrates my ability to build a **complex game** with **dynamic data** fetched via json-server and a polished UI using React. 🎯
+This game recreates the iconic tower-defense experience with **6 stages**, immersive sound effects, and customizable zombies. It demonstrates my ability to build a **complex game** with **dynamic data** fetched via json-server and a polished UI using React. 🎯
 
 ## Features
-- 🌱 Over 8 challenging stages by selecting difficulty(Easy,Normal,Hard) 
-- 🧟 Customizable zombies for a personalized experience
+- 🌱 Six stages with Easy, Normal, and Hard difficulty
+- 🧟 Saved zombie appearances can spawn alongside regular zombies
 - 🎵 Immersive sound effects and background music
 - 🎮 Long, entertaining gameplay with smooth mechanics
 - 🌐 Data management via json-server API
@@ -20,7 +20,9 @@ This project highlights my skills in **React development**, **API-driven game lo
 ## Getting Started
 1. Clone the repository: `git clone [your-repo-link]`
 2. Install dependencies: `npm install`
-3. Start the json-server: `npx json-server src/core/services/dataBase/db.json `
-4. Run the React app: `npm start`
-5. Open `http://localhost:3000` in a browser.
+3. Start the json-server: `npm run api`
+4. In a second terminal, run the React app with `npm run dev`
+5. Open `http://localhost:5173` in a browser.
 6. Start defending your garden!
+
+Use the **Fullscreen** button to fit the game to the display. Press Esc or choose **Exit fullscreen** to leave fullscreen.
