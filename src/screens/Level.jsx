@@ -9,7 +9,7 @@ import ZombieSprite from '../components/map/ZombieSprite'
 import { readZombatars } from '../core/services/dataBase/zombatar'
 
 const STEP = 50
-const FIELD_PAN = -378
+const FIELD_PAN = -219
 const CELLS = Array.from({ length: ROWS * COLUMNS }, (_, index) => ({
     row: Math.floor(index / COLUMNS),
     column: index % COLUMNS,
@@ -205,11 +205,13 @@ function Round({ seeds }) {
             )}
             {lawn?.phase === 'lost' && (
                 <div role="dialog" aria-label="Game over" className="absolute inset-0 z-40 grid place-content-center bg-black/60">
-                    <img src={levelImage('gameOver.png')} alt="Game over" />
-                    <button type="button" aria-label="Try again" className="justify-self-center -mt-[63px] hover:brightness-125"
-                        onClick={() => { tapClick(); navigate('/select-plants') }}>
-                        <img src={levelImage('tryAgain_button.png')} alt="" />
-                    </button>
+                    <div className="relative">
+                        <img src={levelImage('gameOver.png')} alt="Game over" />
+                        <button type="button" aria-label="Try again" className="absolute left-[49px] top-[174px] hover:brightness-125"
+                            onClick={() => { tapClick(); navigate('/select-plants') }}>
+                            <img src={levelImage('tryAgain_button.png')} alt="" />
+                        </button>
+                    </div>
                 </div>
             )}
             {lawn?.phase === 'won' && (
